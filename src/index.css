@@ -1,0 +1,378 @@
+/* ============================================================================
+   Jeff Buckley — Grace & Legacy
+   Design system: "Nocturne"
+   Obsidian surfaces · bronze light · Cormorant display · Inter body
+   Tailwind CSS v4 (CSS-first config — no tailwind.config.js needed)
+   ========================================================================== */
+
+@import "tailwindcss";
+
+@theme {
+  /* ---- Typography ------------------------------------------------------ */
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Surfaces -------------------------------------------------------- */
+  --color-ink-950: #060608;
+  --color-ink-900: #09090c;
+  --color-ink-850: #0c0c10;
+  --color-ink-800: #111116;
+  --color-ink-700: #18181f;
+  --color-ink-600: #23232c;
+
+  /* ---- Paper / text ---------------------------------------------------- */
+  --color-ivory-50: #fbf9f4;
+  --color-ivory-100: #f2ede2;
+  --color-ivory-200: #e2daca;
+  --color-mist-200: #d8d3c8;
+  --color-mist-300: #b4aea2;
+  --color-mist-400: #8d877c;
+  --color-mist-500: #6b665e;
+
+  /* ---- Bronze (primary accent, sampled from the Grace sleeve) ---------- */
+  --color-bronze-200: #f6e9cd;
+  --color-bronze-300: #e9d3a7;
+  --color-bronze-400: #d9bd88;
+  --color-bronze-500: #c8a96b;
+  --color-bronze-600: #a5874e;
+
+  /* ---- Steel (secondary accent, the cool half of the cover) ------------ */
+  --color-steel-300: #b8c3d2;
+  --color-steel-400: #8b9bb0;
+  --color-steel-500: #65748b;
+
+  /* ---- Radii ----------------------------------------------------------- */
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.75rem;
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 58s linear infinite;
+  --animate-drift: drift 20s ease-in-out infinite;
+  --animate-drift-slow: drift 30s ease-in-out infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-equalize: equalize 1.1s ease-in-out infinite;
+  --animate-scroll-cue: scroll-cue 2.4s ease-in-out infinite;
+  --animate-ken-burns: ken-burns 28s ease-in-out infinite alternate;
+}
+
+/* ============================================================================
+   Keyframes
+   ========================================================================== */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-reverse {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(4%, -6%, 0) scale(1.08); }
+  66%      { transform: translate3d(-5%, 4%, 0) scale(0.96); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.32); }
+  50%      { transform: scaleY(1); }
+}
+@keyframes scroll-cue {
+  0%   { transform: translateY(-40%); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(140%); opacity: 0; }
+}
+@keyframes ken-burns {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to   { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+}
+
+/* ============================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    background-color: var(--color-ink-950);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--color-ink-950);
+    color: var(--color-mist-300);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-bronze-500) 34%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bronze-400);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink-950); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-600);
+    border-radius: 999px;
+    border: 2px solid var(--color-ink-950);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #34343f; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ============================================================================
+   Utilities
+   ========================================================================== */
+
+/* Frosted panel used by the nav, cards and floating chips */
+@utility glass {
+  background-image: linear-gradient(155deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 24px 60px -32px rgba(0, 0, 0, 0.9);
+}
+
+/* Hairline divider that stays visible on any surface */
+@utility hairline {
+  border-color: color-mix(in srgb, #fff 8%, transparent);
+}
+
+/* Bronze gradient lettering for the emphasised half of a headline */
+@utility text-bronze-gradient {
+  background-image: linear-gradient(
+    104deg,
+    var(--color-bronze-200) 0%,
+    var(--color-bronze-300) 26%,
+    var(--color-bronze-500) 58%,
+    #8f7448 76%,
+    var(--color-bronze-300) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fade the edges of marquees and ticker rows */
+@utility mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* Subtle vertical fade for section transitions */
+@utility mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+/* Film grain, sampled once and tiled */
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* ============================================================================
+   Composite effects
+   ========================================================================== */
+
+/* Full-viewport grain pass, sits above content but below modals */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Traveling light on a card border — the "Border Beam" pattern.
+   Requires @property so the conic angle can animate. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
+.border-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 236deg,
+    color-mix(in srgb, var(--color-bronze-500) 35%, transparent) 268deg,
+    var(--color-bronze-400) 300deg,
+    #fff3d8 314deg,
+    var(--color-bronze-500) 328deg,
+    transparent 356deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: beam-spin var(--beam-duration, 7s) linear infinite;
+  pointer-events: none;
+}
+
+/* Dotted blueprint grid, faded toward the edges */
+.dot-grid {
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, #000 20%, transparent 78%);
+}
+
+/* Thin ruled line pattern for section backdrops */
+.ruled {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 12.5% 100%;
+}
+
+/* Native range input, restyled for the media player */
+input[type="range"].seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+}
+input[type="range"].seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--color-bronze-300);
+  box-shadow: 0 0 0 4px rgba(200, 169, 107, 0.18);
+  transition: transform 0.2s ease;
+}
+input[type="range"].seek:hover::-webkit-slider-thumb { transform: scale(1.15); }
+input[type="range"].seek::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-bronze-300);
+}
+
+/* Note: never hide ::-webkit-media-controls globally — the lightbox needs them.
+   The hero background video has no `controls` attribute, so no chrome appears. */
+
+/* ============================================================================
+   Form controls — custom radio & checkbox drawn in CSS so the checked state
+   is always legible on the dark surface (native controls ignore accent-color
+   in some Chromium builds).
+   ========================================================================== */
+
+.option-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.option-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.option-mark--radio { border-radius: 999px; }
+.option-mark--checkbox { border-radius: 5px; }
+
+.option-mark--radio::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-bronze-300);
+  transform: scale(0);
+  transition: transform 0.18s ease;
+}
+
+.option-mark--checkbox::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  margin-top: -2px;
+  border-left: 2px solid #060608;
+  border-bottom: 2px solid #060608;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.18s ease;
+}
+
+.option-input:checked + .option-mark {
+  border-color: var(--color-bronze-400);
+  background: var(--color-bronze-300);
+}
+
+.option-input:checked + .option-mark--radio {
+  background: color-mix(in srgb, var(--color-bronze-500) 14%, transparent);
+}
+
+.option-input:checked + .option-mark--radio::after { transform: scale(1); }
+.option-input:checked + .option-mark--checkbox::after { transform: rotate(-45deg) scale(1); }
+
+.option-input:focus-visible + .option-mark {
+  outline: 2px solid var(--color-bronze-400);
+  outline-offset: 2px;
+}
