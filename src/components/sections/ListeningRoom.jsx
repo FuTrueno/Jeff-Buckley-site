@@ -154,7 +154,7 @@ export default function ListeningRoom() {
           }
           description="Play the record here, or jump straight to the song you came for. Every file is a placeholder path you can point at your own audio."
           action={
-            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-mist-500">
+            <div className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.3em] text-mist-400">
               <Equalizer active={playing} />
               <span>{playing ? "Playing" : "Ready"}</span>
             </div>
@@ -179,25 +179,25 @@ export default function ListeningRoom() {
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-bronze-500">
+                    <p className="font-mono text-[12px] uppercase tracking-[0.32em] text-bronze-500">
                       Track {String(currentIndex + 1).padStart(2, "0")} /{" "}
                       {String(tracks.length).padStart(2, "0")}
                     </p>
                     <h3 className="mt-2 font-display text-[26px] leading-[1.1] text-ivory-50 sm:text-[30px]">
                       {current.title}
                     </h3>
-                    <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] text-mist-500">
+                    <p className="mt-1.5 text-[12px] uppercase tracking-[0.18em] text-mist-400">
                       {current.meta}
                     </p>
                   </div>
                 </div>
 
-                <p className="mt-5 max-w-md text-[13.5px] leading-relaxed text-mist-400">
+                <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-mist-400">
                   {current.note}
                 </p>
 
                 {hasFailed ? (
-                  <p className="mt-4 inline-flex items-start gap-2 rounded-xl border border-bronze-500/25 bg-bronze-500/[0.07] px-3 py-2 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-bronze-300">
+                  <p className="mt-4 inline-flex items-start gap-2 rounded-xl border border-bronze-500/25 bg-bronze-500/[0.07] px-3 py-2 font-mono text-[12px] uppercase leading-relaxed tracking-[0.14em] text-bronze-300">
                     <span aria-hidden="true" className="mt-0.5 block size-1.5 shrink-0 rounded-full bg-bronze-400" />
                     <span>
                       Add <span className="normal-case tracking-normal">{friendlyName(current.src)}</span> to{" "}
@@ -214,7 +214,7 @@ export default function ListeningRoom() {
                     type="button"
                     onClick={() => goTo(-1)}
                     aria-label="Previous track"
-                    className="inline-flex size-10 items-center justify-center rounded-full border border-white/10 text-mist-300 transition-colors hover:border-bronze-500/50 hover:text-bronze-200"
+                    className="inline-flex size-11 items-center justify-center rounded-full border border-white/10 text-mist-300 transition-colors hover:border-bronze-500/50 hover:text-bronze-200"
                   >
                     <SkipBack className="size-4" strokeWidth={1.6} />
                   </button>
@@ -237,14 +237,14 @@ export default function ListeningRoom() {
                     type="button"
                     onClick={() => goTo(1)}
                     aria-label="Next track"
-                    className="inline-flex size-10 items-center justify-center rounded-full border border-white/10 text-mist-300 transition-colors hover:border-bronze-500/50 hover:text-bronze-200"
+                    className="inline-flex size-11 items-center justify-center rounded-full border border-white/10 text-mist-300 transition-colors hover:border-bronze-500/50 hover:text-bronze-200"
                   >
                     <SkipForward className="size-4" strokeWidth={1.6} />
                   </button>
 
-                  <p className="ml-auto font-mono text-[11px] tabular-nums tracking-[0.18em] text-mist-400">
+                  <p className="ml-auto font-mono text-[12px] tabular-nums tracking-[0.18em] text-mist-400">
                     {formatTime(progress)}{" "}
-                    <span className="text-mist-500">/ {duration > 0 ? formatTime(duration) : current.duration}</span>
+                    <span className="text-mist-400">/ {duration > 0 ? formatTime(duration) : current.duration}</span>
                   </p>
                 </div>
 
@@ -281,10 +281,10 @@ export default function ListeningRoom() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between border-t border-white/8 pt-4">
-                  <p className="font-mono text-[9.5px] uppercase tracking-[0.26em] text-mist-500">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400">
                     {current.meta}
                   </p>
-                  <p className="font-mono text-[9.5px] uppercase tracking-[0.26em] text-mist-500">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400">
                     Grace · 1994
                   </p>
                 </div>
@@ -318,8 +318,8 @@ export default function ListeningRoom() {
                   >
                     <span
                       className={cn(
-                        "w-5 shrink-0 font-mono text-[10px] tabular-nums tracking-[0.12em]",
-                        isActive ? "text-bronze-400" : "text-mist-500",
+                        "w-5 shrink-0 font-mono text-[12px] tabular-nums tracking-[0.12em]",
+                        isActive ? "text-bronze-400" : "text-mist-400",
                       )}
                     >
                       {isActive && playing ? (
@@ -338,16 +338,16 @@ export default function ListeningRoom() {
                       >
                         {track.title}
                       </span>
-                      <span className="mt-0.5 block truncate text-[11px] text-mist-500">
+                      <span className="mt-0.5 block truncate text-[12px] text-mist-400">
                         {isMissing ? "Audio file not added yet" : track.meta}
                       </span>
                     </span>
 
-                    <span className="hidden max-w-[300px] truncate text-[12px] text-mist-500 xl:block">
+                    <span className="hidden max-w-[300px] truncate text-[12px] text-mist-400 xl:block">
                       {track.note}
                     </span>
 
-                    <span className="w-10 shrink-0 text-right font-mono text-[11px] tabular-nums text-mist-500">
+                    <span className="w-10 shrink-0 text-right font-mono text-[12px] tabular-nums text-mist-400">
                       {track.duration}
                     </span>
 
@@ -372,7 +372,7 @@ export default function ListeningRoom() {
             </div>
 
             {missingFiles > 0 ? (
-              <p className="mt-4 border-t border-white/8 pt-4 font-mono text-[9.5px] uppercase leading-relaxed tracking-[0.2em] text-mist-500">
+              <p className="mt-4 border-t border-white/8 pt-4 font-mono text-[12px] uppercase leading-relaxed tracking-[0.2em] text-mist-400">
                 {missingFiles} of {tracks.length} files not found — audio is loaded from{" "}
                 <span className="text-mist-400">public/audio/</span>. Paths live in{" "}
                 <span className="text-mist-400">src/data/media.js</span>.

@@ -1,7 +1,6 @@
 import { features } from "../../data/site";
 import { media } from "../../data/media";
 import { useSectionNav } from "../../hooks/useSectionNav";
-import { BorderBeam } from "../magicui/border-beam";
 import Button from "../ui/Button";
 import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
@@ -13,7 +12,7 @@ function CardHeader({ icon: Icon, kicker }) {
       <span className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-bronze-300 transition-colors duration-500 group-hover:border-bronze-500/40 group-hover:text-bronze-200">
         <Icon aria-hidden="true" className="size-[18px]" strokeWidth={1.5} />
       </span>
-      <span className="text-right font-mono text-[8.5px] uppercase leading-relaxed tracking-[0.22em] text-mist-500">
+      <span className="text-right font-mono text-[12px] uppercase leading-relaxed tracking-[0.22em] text-mist-400">
         {kicker}
       </span>
     </div>
@@ -22,7 +21,7 @@ function CardHeader({ icon: Icon, kicker }) {
 
 function Detail({ children }) {
   return (
-    <p className="mt-auto flex items-center gap-2 pt-6 font-mono text-[8.5px] uppercase tracking-[0.2em] text-bronze-500/85">
+    <p className="mt-auto flex items-center gap-2 pt-6 font-mono text-[12px] uppercase tracking-[0.2em] text-bronze-500/85">
       <span aria-hidden="true" className="block size-1 rounded-full bg-bronze-500/70" />
       {children}
     </p>
@@ -70,7 +69,7 @@ export default function FeatureGrid() {
                     <h3 className="mt-7 font-display text-[2rem] leading-[1.05] text-ivory-50">
                       {title}
                     </h3>
-                    <p className="mt-4 max-w-md text-[13.5px] leading-relaxed text-mist-400">
+                    <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-mist-400">
                       {body}
                     </p>
                     <Detail>{detail}</Detail>
@@ -83,7 +82,7 @@ export default function FeatureGrid() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
-                    <p className="absolute bottom-4 left-4 font-mono text-[8px] uppercase tracking-[0.26em] text-bronze-200">
+                    <p className="absolute bottom-4 left-4 font-mono text-[12px] uppercase tracking-[0.26em] text-bronze-200">
                       Grace · 1994
                     </p>
                   </div>
@@ -97,11 +96,11 @@ export default function FeatureGrid() {
                     <h3 className="mt-7 font-display text-[1.6rem] leading-tight text-ivory-50">
                       {title}
                     </h3>
-                    <p className="mt-3 text-[13.5px] leading-relaxed text-mist-400">{body}</p>
+                    <p className="mt-3 text-[14.5px] leading-relaxed text-mist-400">{body}</p>
                     <Detail>{detail}</Detail>
                   </div>
                   <div className="flex flex-col items-start gap-4 rounded-2xl border border-white/8 bg-white/[0.02] p-6">
-                    <p className="font-mono text-[8px] uppercase tracking-[0.26em] text-mist-500">
+                    <p className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400">
                       Start here
                     </p>
                     <p className="font-display text-[1.45rem] leading-tight text-ivory-100">
@@ -120,7 +119,7 @@ export default function FeatureGrid() {
                   <h3 className="mt-7 font-display text-[1.6rem] leading-tight text-ivory-50">
                     {title}
                   </h3>
-                  <p className="mt-3 text-[13.5px] leading-relaxed text-mist-400">{body}</p>
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-mist-400">{body}</p>
                   <Detail>{detail}</Detail>
                 </div>
               );
@@ -135,15 +134,12 @@ export default function FeatureGrid() {
             return (
               <Reveal key={feature.id} delay={index * 0.05} className={spanClass}>
                 {featured ? (
-                  <div className="relative h-full overflow-hidden rounded-[1.75rem]">
-                    <BorderBeam size={72} duration={8} colorFrom="#f6e9cd" colorTo="#a5874e" />
-                    <SpotlightCard
+                  <SpotlightCard
                       className="group h-full rounded-[1.75rem] border border-white/10 bg-ink-900/40"
                       spotlightColor="rgba(200,169,107,0.22)"
                     >
                       {content}
                     </SpotlightCard>
-                  </div>
                 ) : (
                   <SpotlightCard
                     className="group h-full rounded-[1.75rem] border border-white/[0.07] bg-white/[0.015]"

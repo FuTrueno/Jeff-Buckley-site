@@ -24,7 +24,7 @@ const initialValues = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-ink-950/60 px-4 py-3 text-[14px] text-ivory-100 placeholder:text-mist-500 transition-colors duration-300 [color-scheme:dark] hover:border-white/20 focus:border-bronze-500/60 focus:bg-ink-950/80 focus:outline-none focus:ring-2 focus:ring-bronze-500/15 focus-visible:outline-none";
+  "w-full rounded-xl border border-white/10 bg-ink-950/60 px-4 py-3 text-[15px] text-ivory-100 placeholder:text-mist-400 transition-colors duration-300 [color-scheme:dark] hover:border-white/20 focus:border-bronze-500/60 focus:bg-ink-950/80 focus:outline-none focus:ring-2 focus:ring-bronze-500/15 focus-visible:outline-none";
 
 const sessionTypes = [
   { value: "album", label: "Full album listening", hint: "Start to finish, in order" },
@@ -74,17 +74,17 @@ function Field({ label, htmlFor, error, hint, className, children }) {
     <div className={className}>
       <label
         htmlFor={htmlFor}
-        className="block font-mono text-[8.5px] uppercase tracking-[0.24em] text-mist-400"
+        className="block font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400"
       >
         {label}
       </label>
       <div className="mt-2.5">{children}</div>
       {error ? (
-        <p id={`${htmlFor}-error`} className="mt-2 text-[11px] text-rose-300">
+        <p id={`${htmlFor}-error`} className="mt-2 text-[12px] text-rose-300">
           {error}
         </p>
       ) : hint ? (
-        <p className="mt-2 text-[11px] text-mist-500">{hint}</p>
+        <p className="mt-2 text-[12px] text-mist-400">{hint}</p>
       ) : null}
     </div>
   );
@@ -196,7 +196,7 @@ export default function ListeningForm() {
               </motion.span>
             </h1>
 
-            <p className="mt-6 max-w-md text-[14.5px] leading-relaxed text-mist-300">
+            <p className="mt-6 max-w-md text-[16px] leading-relaxed text-mist-300">
               {formIntro.body}
             </p>
 
@@ -204,12 +204,12 @@ export default function ListeningForm() {
               {steps.map((step, index) => (
                 <Reveal key={step.title} as="li" delay={0.05 * index}>
                   <div className="flex gap-4">
-                    <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-bronze-500/30 font-mono text-[9px] text-bronze-400">
+                    <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-bronze-500/30 font-mono text-[12px] text-bronze-400">
                       {index + 1}
                     </span>
                     <div>
-                      <p className="text-[13px] font-medium text-ivory-100">{step.title}</p>
-                      <p className="mt-1 text-[12.5px] leading-relaxed text-mist-400">
+                      <p className="text-[14px] font-medium text-ivory-100">{step.title}</p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-mist-400">
                         {step.body}
                       </p>
                     </div>
@@ -218,7 +218,7 @@ export default function ListeningForm() {
               ))}
             </ol>
 
-            <p className="mt-8 font-mono text-[8px] uppercase leading-relaxed tracking-[0.24em] text-mist-500">
+            <p className="mt-8 font-mono text-[12px] uppercase leading-relaxed tracking-[0.24em] text-mist-400">
               No account is created. No data leaves this page.
             </p>
           </div>
@@ -249,7 +249,7 @@ export default function ListeningForm() {
                     <h2 className="mt-6 font-display text-[2.1rem] leading-tight text-ivory-50">
                       You&rsquo;re on the list.
                     </h2>
-                    <p className="mt-3 max-w-md text-[13.5px] leading-relaxed text-mist-400">
+                    <p className="mt-3 max-w-md text-[14.5px] leading-relaxed text-mist-400">
                       Nothing was submitted anywhere — this is a front-end
                       demonstration. Here is what the server would have received.
                     </p>
@@ -260,10 +260,10 @@ export default function ListeningForm() {
                           key={row.label}
                           className="flex items-start justify-between gap-6 px-4 py-3"
                         >
-                          <dt className="font-mono text-[8px] uppercase tracking-[0.24em] text-mist-500">
+                          <dt className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                             {row.label}
                           </dt>
-                          <dd className="max-w-[60%] text-right text-[12.5px] leading-relaxed text-ivory-100">
+                          <dd className="max-w-[60%] text-right text-[13px] leading-relaxed text-ivory-100">
                             {row.value}
                           </dd>
                         </div>
@@ -293,10 +293,10 @@ export default function ListeningForm() {
                     className="space-y-9"
                   >
                     <div className="flex items-center justify-between gap-4">
-                      <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-mist-500">
+                      <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-mist-400">
                         Session registration
                       </p>
-                      <p className="font-mono text-[8px] uppercase tracking-[0.24em] text-mist-500">
+                      <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                         <span className="text-bronze-400">*</span> required
                       </p>
                     </div>
@@ -312,8 +312,8 @@ export default function ListeningForm() {
 
                     {/* 1 — Account */}
                     <fieldset className="space-y-5">
-                      <legend className="mb-5 flex w-full items-center gap-3 font-mono text-[8.5px] uppercase tracking-[0.28em] text-bronze-400">
-                        <span className="inline-flex size-5 items-center justify-center rounded-full border border-bronze-500/40 text-[9px]">
+                      <legend className="mb-5 flex w-full items-center gap-3 font-mono text-[12px] uppercase tracking-[0.28em] text-bronze-400">
+                        <span className="inline-flex size-5 items-center justify-center rounded-full border border-bronze-500/40 text-[12px]">
                           1
                         </span>
                         Account details
@@ -384,13 +384,13 @@ export default function ListeningForm() {
                                 errors.password ? "password-error" : undefined
                               }
                               required
-                              className={cn(inputClass, "pr-12")}
+                              className={cn(inputClass, "pr-14")}
                             />
                             <button
                               type="button"
                               onClick={() => setShowPassword((current) => !current)}
                               aria-label={showPassword ? "Hide password" : "Show password"}
-                              className="absolute right-3 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-mist-400 transition-colors hover:text-bronze-200"
+                              className="absolute right-1 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-md text-mist-400 transition-colors hover:text-bronze-200"
                             >
                               {showPassword ? (
                                 <EyeOff className="size-4" strokeWidth={1.6} />
@@ -422,8 +422,8 @@ export default function ListeningForm() {
 
                     {/* 2 — Preferences */}
                     <fieldset className="space-y-6">
-                      <legend className="mb-5 flex w-full items-center gap-3 font-mono text-[8.5px] uppercase tracking-[0.28em] text-bronze-400">
-                        <span className="inline-flex size-5 items-center justify-center rounded-full border border-bronze-500/40 text-[9px]">
+                      <legend className="mb-5 flex w-full items-center gap-3 font-mono text-[12px] uppercase tracking-[0.28em] text-bronze-400">
+                        <span className="inline-flex size-5 items-center justify-center rounded-full border border-bronze-500/40 text-[12px]">
                           2
                         </span>
                         Session preferences
@@ -477,7 +477,7 @@ export default function ListeningForm() {
                       </div>
 
                       <div>
-                        <p className="font-mono text-[8.5px] uppercase tracking-[0.24em] text-mist-400">
+                        <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                           Session type *
                         </p>
                         <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
@@ -500,10 +500,10 @@ export default function ListeningForm() {
                                 className="option-mark option-mark--radio mt-0.5"
                               />
                               <span>
-                                <span className="block text-[13px] text-ivory-100">
+                                <span className="block text-[14px] text-ivory-100">
                                   {type.label}
                                 </span>
-                                <span className="mt-0.5 block text-[11px] text-mist-500">
+                                <span className="mt-0.5 block text-[12px] text-mist-400">
                                   {type.hint}
                                 </span>
                               </span>
@@ -511,12 +511,12 @@ export default function ListeningForm() {
                           ))}
                         </div>
                         {errors.sessionType ? (
-                          <p className="mt-2 text-[11px] text-rose-300">{errors.sessionType}</p>
+                          <p className="mt-2 text-[12px] text-rose-300">{errors.sessionType}</p>
                         ) : null}
                       </div>
 
                       <div>
-                        <p className="font-mono text-[8.5px] uppercase tracking-[0.24em] text-mist-400">
+                        <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                           Topics of interest
                         </p>
                         <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
@@ -537,7 +537,7 @@ export default function ListeningForm() {
                                 aria-hidden="true"
                                 className="option-mark option-mark--checkbox"
                               />
-                              <span className="text-[12.5px] leading-tight text-mist-200">
+                              <span className="text-[13px] leading-tight text-mist-200">
                                 {topic.label}
                               </span>
                             </label>
@@ -576,7 +576,7 @@ export default function ListeningForm() {
               </AnimatePresence>
             </div>
 
-            <p className="mt-4 px-1 font-mono text-[8px] uppercase leading-relaxed tracking-[0.2em] text-mist-500">
+            <p className="mt-4 px-1 font-mono text-[12px] uppercase leading-relaxed tracking-[0.2em] text-mist-400">
               Built as a front-end exercise — form state lives in React only.
             </p>
           </div>

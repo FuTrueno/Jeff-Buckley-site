@@ -64,12 +64,12 @@ export default function Information() {
         <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8">
           <nav
             aria-label="Breadcrumb"
-            className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-mist-500"
+            className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400"
           >
             <Link to="/" className="transition-colors hover:text-bronze-300">
               Home
             </Link>
-            <span aria-hidden="true" className="mx-2 text-mist-500/50">
+            <span aria-hidden="true" className="mx-2 text-mist-400/50">
               /
             </span>
             <span className="text-mist-300">Information</span>
@@ -89,7 +89,7 @@ export default function Information() {
                   behind Grace.
                 </motion.span>
               </h1>
-              <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-mist-300">
+              <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-mist-300">
                 {information.standfirst}
               </p>
             </div>
@@ -102,10 +102,10 @@ export default function Information() {
                       key={note.label}
                       className="flex items-baseline justify-between gap-4 py-3 first:pt-0 last:pb-0"
                     >
-                      <dt className="font-mono text-[8px] uppercase tracking-[0.24em] text-mist-400">
+                      <dt className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                         {note.label}
                       </dt>
-                      <dd className="text-right text-[12.5px] text-ivory-50">{note.value}</dd>
+                      <dd className="text-right text-[13px] text-ivory-50">{note.value}</dd>
                     </div>
                   ))}
                 </dl>
@@ -127,14 +127,14 @@ export default function Information() {
               </Reveal>
 
               <Reveal delay={0.06}>
-                <p className="mt-7 text-[15px] leading-[1.9] text-mist-300">
+                <p className="mt-7 text-[16px] leading-[1.9] text-mist-300">
                   {information.paragraphs[1]}
                 </p>
               </Reveal>
 
               <Reveal delay={0.12}>
                 <aside className="my-10 rounded-r-2xl border-l-2 border-bronze-500/70 bg-white/[0.025] py-6 pl-6 pr-5">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-bronze-400">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-bronze-400">
                     Listening note
                   </p>
                   <p className="mt-3 font-display text-[1.5rem] italic leading-snug text-ivory-100">
@@ -150,12 +150,12 @@ export default function Information() {
                 {listenFor.map((item, index) => (
                   <Reveal key={item.title} delay={0.04 * index} as="li">
                     <div className="flex gap-4">
-                      <span className="mt-1.5 font-mono text-[9px] tracking-[0.16em] text-bronze-500">
+                      <span className="mt-1.5 font-mono text-[12px] tracking-[0.16em] text-bronze-500">
                         {pad2(index + 1)}
                       </span>
                       <div>
-                        <p className="text-[14px] font-medium text-ivory-100">{item.title}</p>
-                        <p className="mt-1.5 text-[13.5px] leading-relaxed text-mist-400">
+                        <p className="text-[15px] font-medium text-ivory-100">{item.title}</p>
+                        <p className="mt-1.5 text-[14.5px] leading-relaxed text-mist-400">
                           {item.body}
                         </p>
                       </div>
@@ -172,7 +172,7 @@ export default function Information() {
                   href="https://github.com/FuTrueno/Jeff-Buckley"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.24em] text-mist-500 transition-colors hover:text-bronze-300"
+                  className="inline-flex min-h-11 items-center gap-1.5 py-2 font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400 transition-colors hover:text-bronze-300"
                 >
                   Original assignment
                   <ArrowUpRight className="size-3" strokeWidth={1.6} />
@@ -184,7 +184,7 @@ export default function Information() {
             <aside className="lg:col-span-4">
               <div className="sticky top-28 space-y-4">
                 <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-6">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-mist-500">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-mist-400">
                     On this page
                   </p>
                   <ul className="mt-4 space-y-1">
@@ -193,10 +193,10 @@ export default function Information() {
                         <button
                           type="button"
                           onClick={() => goToSection(anchor.id)}
-                          className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left text-[13px] text-mist-300 transition-colors hover:bg-white/[0.04] hover:text-bronze-200"
+                          className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left text-[14px] text-mist-300 transition-colors hover:bg-white/[0.04] hover:text-bronze-200"
                         >
                           {anchor.label}
-                          <ArrowUpRight className="size-3 text-mist-500" strokeWidth={1.6} />
+                          <ArrowUpRight className="size-3 text-mist-400" strokeWidth={1.6} />
                         </button>
                       </li>
                     ))}
@@ -204,7 +204,7 @@ export default function Information() {
                 </div>
 
                 <div className="rounded-2xl border border-white/8 bg-gradient-to-b from-bronze-500/[0.06] to-transparent p-6">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-mist-500">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-mist-400">
                     Related
                   </p>
                   <p className="mt-4 font-display text-[1.35rem] leading-snug text-ivory-100">
@@ -213,7 +213,7 @@ export default function Information() {
                   <button
                     type="button"
                     onClick={() => goToSection("listen")}
-                    className="mt-4 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-bronze-300 transition-colors hover:text-bronze-200"
+                    className="mt-4 inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.22em] text-bronze-300 transition-colors hover:text-bronze-200"
                   >
                     Open the player
                     <ArrowUpRight className="size-3" strokeWidth={1.8} />

@@ -73,14 +73,14 @@ export default function Lightbox({ open, item, index = 0, count = 1, onClose, on
         >
           {/* Top bar */}
           <div className="flex items-center justify-between px-5 py-4 sm:px-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-mist-400">
+            <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-mist-400">
               {String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
             </p>
             <button
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-ivory-100 transition-colors hover:border-bronze-500/60 hover:text-bronze-200"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-ivory-100 transition-colors hover:border-bronze-500/60 hover:text-bronze-200"
               aria-label="Close viewer"
             >
               <X className="size-4" strokeWidth={1.75} />
@@ -115,7 +115,7 @@ export default function Lightbox({ open, item, index = 0, count = 1, onClose, on
                         <p className="font-display text-2xl text-ivory-50">
                           Video not added yet
                         </p>
-                        <p className="mx-auto mt-3 max-w-sm font-mono text-[9.5px] uppercase leading-relaxed tracking-[0.2em] text-mist-400">
+                        <p className="mx-auto mt-3 max-w-sm font-mono text-[12px] uppercase leading-relaxed tracking-[0.2em] text-mist-400">
                           Drop the file into <span className="text-bronze-300">public/video</span>{" "}
                           and point <span className="text-bronze-300">src/data/media.js</span> at it.
                         </p>
@@ -148,7 +148,7 @@ export default function Lightbox({ open, item, index = 0, count = 1, onClose, on
                           className="absolute inset-0 grid place-items-center rounded-2xl bg-ink-950/45"
                           aria-label="Play video with sound"
                         >
-                          <span className="inline-flex items-center gap-2 rounded-full bg-bronze-300 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-950">
+                          <span className="inline-flex items-center gap-2 rounded-full bg-bronze-300 px-6 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-ink-950">
                             <Play className="size-3.5" fill="currentColor" strokeWidth={0} />
                             Play with sound
                           </span>
@@ -203,7 +203,7 @@ export default function Lightbox({ open, item, index = 0, count = 1, onClose, on
           >
             <p className="font-display text-xl text-ivory-100">{item.caption}</p>
             {item.detail ? (
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.28em] text-mist-500">
+              <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.28em] text-mist-400">
                 {item.detail}
               </p>
             ) : null}

@@ -57,10 +57,10 @@ export default function Story() {
                       />
                     </div>
                     <figcaption className="flex items-center justify-between gap-4 border-t border-white/8 px-5 py-4">
-                      <span className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-mist-500">
+                      <span className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400">
                         Grace — album sleeve
                       </span>
-                      <span className="font-mono text-[8.5px] tracking-[0.22em] text-bronze-400">
+                      <span className="font-mono text-[12px] tracking-[0.22em] text-bronze-400">
                         1994
                       </span>
                     </figcaption>
@@ -86,7 +86,7 @@ export default function Story() {
               <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-white/8 pt-6">
                 {facts.map((fact) => (
                   <div key={fact.label}>
-                    <dt className="font-mono text-[8px] uppercase tracking-[0.24em] text-mist-500">
+                    <dt className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                       {fact.label}
                     </dt>
                     <dd className="mt-1.5 font-display text-lg leading-none text-ivory-100">
@@ -110,7 +110,7 @@ export default function Story() {
               }
             />
 
-            <div className="mt-9 space-y-5 text-[14.5px] leading-[1.85] text-mist-300">
+            <div className="mt-9 space-y-5 text-[16px] leading-[1.85] text-mist-300">
               {story.paragraphs.map((paragraph, index) => (
                 <Reveal key={index} delay={0.05 + index * 0.05}>
                   <p>{paragraph}</p>
@@ -123,7 +123,7 @@ export default function Story() {
                 <p className="font-display text-[1.6rem] italic leading-snug text-ivory-100 sm:text-[1.9rem]">
                   “{story.pull}”
                 </p>
-                <cite className="mt-3 block font-mono text-[8.5px] uppercase not-italic tracking-[0.28em] text-mist-500">
+                <cite className="mt-3 block font-mono text-[12px] uppercase not-italic tracking-[0.28em] text-mist-400">
                   Listening note — Grace era
                 </cite>
               </blockquote>
@@ -138,7 +138,7 @@ export default function Story() {
                   href="https://github.com/FuTrueno/Jeff-Buckley"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.24em] text-mist-500 transition-colors hover:text-bronze-300"
+                  className="inline-flex min-h-11 items-center gap-1.5 py-2 font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400 transition-colors hover:text-bronze-300"
                 >
                   Original assignment
                   <ArrowUpRight className="size-3" strokeWidth={1.6} />

@@ -52,31 +52,31 @@ export default function SongTable() {
                 <tr className="border-b border-white/8 bg-white/[0.025]">
                   <th
                     scope="col"
-                    className="w-14 px-4 py-4 font-mono text-[8px] font-normal uppercase tracking-[0.26em] text-mist-500 sm:px-5"
+                    className="w-14 px-4 py-4 font-mono text-[12px] font-normal uppercase tracking-[0.26em] text-mist-400 sm:px-5"
                   >
                     #
                   </th>
                   <th
                     scope="col"
-                    className="px-4 py-4 font-mono text-[8px] font-normal uppercase tracking-[0.26em] text-mist-500 sm:px-5"
+                    className="px-4 py-4 font-mono text-[12px] font-normal uppercase tracking-[0.26em] text-mist-400 sm:px-5"
                   >
                     Song
                   </th>
                   <th
                     scope="col"
-                    className="hidden px-4 py-4 font-mono text-[8px] font-normal uppercase tracking-[0.26em] text-mist-500 sm:table-cell sm:px-5"
+                    className="hidden px-4 py-4 font-mono text-[12px] font-normal uppercase tracking-[0.26em] text-mist-400 sm:table-cell sm:px-5"
                   >
                     Album / release
                   </th>
                   <th
                     scope="col"
-                    className="hidden px-4 py-4 font-mono text-[8px] font-normal uppercase tracking-[0.26em] text-mist-500 lg:table-cell lg:px-5"
+                    className="hidden px-4 py-4 font-mono text-[12px] font-normal uppercase tracking-[0.26em] text-mist-400 lg:table-cell lg:px-5"
                   >
                     Focus
                   </th>
                   <th
                     scope="col"
-                    className="px-4 py-4 text-right font-mono text-[8px] font-normal uppercase tracking-[0.26em] text-mist-500 sm:px-5"
+                    className="px-4 py-4 text-right font-mono text-[12px] font-normal uppercase tracking-[0.26em] text-mist-400 sm:px-5"
                   >
                     Listen
                   </th>
@@ -88,7 +88,7 @@ export default function SongTable() {
                     key={song.title}
                     className="group border-b border-white/[0.055] transition-colors duration-300 last:border-0 hover:bg-white/[0.035]"
                   >
-                    <td className="px-4 py-5 font-mono text-[10px] tabular-nums text-mist-500 sm:px-5">
+                    <td className="px-4 py-5 font-mono text-[12px] tabular-nums text-mist-400 sm:px-5">
                       {pad2(index + 1)}
                     </td>
                     <td className="px-4 py-5 sm:px-5">
@@ -96,10 +96,10 @@ export default function SongTable() {
                         {song.title}
                       </span>
                     </td>
-                    <td className="hidden px-4 py-5 text-[11px] uppercase tracking-[0.16em] text-mist-500 sm:table-cell sm:px-5">
+                    <td className="hidden px-4 py-5 text-[12px] uppercase tracking-[0.16em] text-mist-400 sm:table-cell sm:px-5">
                       {song.release}
                     </td>
-                    <td className="hidden px-4 py-5 text-[13px] text-mist-400 lg:table-cell lg:px-5">
+                    <td className="hidden px-4 py-5 text-[14px] text-mist-400 lg:table-cell lg:px-5">
                       {song.focus}
                     </td>
                     <td className="px-4 py-5 text-right sm:px-5">
@@ -107,7 +107,7 @@ export default function SongTable() {
                         type="button"
                         onClick={() => handlePlay(song.trackId)}
                         aria-label={`Play ${song.title} in the listening room`}
-                        className="inline-flex size-9 items-center justify-center rounded-full border border-white/10 text-mist-400 transition-all duration-300 hover:border-bronze-500/60 hover:bg-bronze-500/10 hover:text-bronze-200 group-hover:border-bronze-500/30 group-hover:text-bronze-300"
+                        className="inline-flex size-11 items-center justify-center rounded-full border border-white/10 text-mist-400 transition-all duration-300 hover:border-bronze-500/60 hover:bg-bronze-500/10 hover:text-bronze-200 group-hover:border-bronze-500/30 group-hover:text-bronze-300"
                       >
                         <Play className="ml-0.5 size-3.5" fill="currentColor" strokeWidth={0} />
                       </button>

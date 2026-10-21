@@ -41,14 +41,14 @@ function VideoTile({ video, large, onOpen }) {
           </span>
         </span>
 
-        <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-ink-950/50 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.2em] text-mist-200 backdrop-blur-md">
+        <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-ink-950/50 px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.2em] text-mist-200 backdrop-blur-md">
           <Maximize2 className="size-2.5" strokeWidth={2} />
           Watch
         </span>
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-        <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-bronze-300">
+        <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-bronze-300">
           {video.meta}
         </p>
         <h3
@@ -60,7 +60,7 @@ function VideoTile({ video, large, onOpen }) {
           {video.title}
         </h3>
         {large ? (
-          <p className="mt-2 hidden max-w-md text-[13px] leading-relaxed text-mist-300 sm:block">
+          <p className="mt-2 hidden max-w-md text-[14px] leading-relaxed text-mist-300 sm:block">
             {video.blurb}
           </p>
         ) : null}
@@ -130,19 +130,19 @@ export default function MediaShowcase() {
                     “The best way to approach the album is as a complete listening
                     experience.”
                   </p>
-                  <p className="mt-3 text-[12.5px] leading-relaxed text-mist-400">
+                  <p className="mt-3 text-[13px] leading-relaxed text-mist-400">
                     Notice how the arrangements and vocal intensity change from
                     song to song.
                   </p>
                 </div>
                 <div className="mt-6 flex items-center justify-between border-t border-white/8 pt-4">
-                  <span className="font-mono text-[8px] uppercase tracking-[0.24em] text-mist-500">
+                  <span className="font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                     10 tracks · 1994
                   </span>
                   <button
                     type="button"
                     onClick={() => goToSection("listen")}
-                    className="group inline-flex items-center gap-1.5 font-mono text-[8.5px] uppercase tracking-[0.22em] text-bronze-300 transition-colors hover:text-bronze-200"
+                    className="group inline-flex min-h-11 items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.22em] text-bronze-300 transition-colors hover:text-bronze-200"
                   >
                     Listen
                     <Play
@@ -164,7 +164,7 @@ export default function MediaShowcase() {
               <h3 className="font-display text-[1.7rem] leading-none text-ivory-100">
                 Stills &amp; studies
               </h3>
-              <span className="font-mono text-[8.5px] uppercase tracking-[0.26em] text-mist-500">
+              <span className="font-mono text-[12px] uppercase tracking-[0.26em] text-mist-400">
                 {String(gallery.length).padStart(2, "0")} frames · click to open
               </span>
             </div>
@@ -193,7 +193,7 @@ export default function MediaShowcase() {
                       aria-hidden="true"
                       className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-95"
                     />
-                    <span className="absolute right-3 top-3 font-mono text-[8px] tracking-[0.2em] text-ivory-100/70">
+                    <span className="absolute right-3 top-3 font-mono text-[12px] tracking-[0.2em] text-ivory-100/70">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
@@ -201,7 +201,7 @@ export default function MediaShowcase() {
                         <span className="block font-display text-lg leading-tight text-ivory-50">
                           {item.caption}
                         </span>
-                        <span className="mt-0.5 block font-mono text-[7.5px] uppercase tracking-[0.24em] text-mist-400">
+                        <span className="mt-0.5 block font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                           {item.detail}
                         </span>
                       </span>

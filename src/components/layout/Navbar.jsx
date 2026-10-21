@@ -35,10 +35,10 @@ function Wordmark() {
     <Link to="/" className="group flex items-center gap-3" aria-label="Jeff Buckley — home">
       <BrandMark className="transition-colors group-hover:border-bronze-500/40" />
       <span className="flex flex-col">
-        <span className="text-[11.5px] font-medium uppercase leading-none tracking-[0.3em] text-ivory-100">
+        <span className="text-[12px] font-medium uppercase leading-none tracking-[0.3em] text-ivory-100">
           Jeff Buckley
         </span>
-        <span className="mt-1.5 font-mono text-[8px] uppercase leading-none tracking-[0.34em] text-mist-500">
+        <span className="mt-1.5 font-mono text-[12px] uppercase leading-none tracking-[0.34em] text-mist-400">
           Grace &amp; Legacy
         </span>
       </span>
@@ -102,7 +102,7 @@ export default function Navbar() {
                 end={item.to === "/"}
                 className={({ isActive }) =>
                   cn(
-                    "relative rounded-full px-4 py-2 transition-colors duration-300",
+                    "relative inline-flex min-h-11 items-center rounded-full px-4 py-2 transition-colors duration-300",
                     isActive ? "text-ivory-50" : "text-mist-400 hover:text-ivory-100",
                   )
                 }
@@ -116,7 +116,7 @@ export default function Navbar() {
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     ) : null}
-                    <span className="relative z-10 text-[10.5px] font-medium uppercase tracking-[0.2em]">
+                    <span className="relative z-10 text-[12px] font-medium uppercase tracking-[0.2em]">
                       {item.label}
                     </span>
                   </>
@@ -128,7 +128,6 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Button
               variant="ghost"
-              size="sm"
               withArrow
               onClick={() => goToSection("listen")}
             >
@@ -142,7 +141,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}
-            className="inline-flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-ivory-100 md:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-ivory-100 md:hidden"
           >
             <Menu className="size-4" strokeWidth={1.6} />
           </button>
@@ -195,7 +194,7 @@ export default function Navbar() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className="font-mono text-[10px] tracking-[0.24em] text-mist-500"
+                      className="font-mono text-[12px] tracking-[0.24em] text-mist-400"
                     >
                       0{index + 1}
                     </span>
@@ -205,7 +204,7 @@ export default function Navbar() {
             </nav>
 
             <div className="border-t border-white/8 px-5 py-6">
-              <p className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.26em] text-mist-500">
+              <p className="font-mono text-[12px] uppercase leading-relaxed tracking-[0.26em] text-mist-400">
                 Web Technologies — Assignment #2
                 <br />
                 Grace &amp; Legacy archive

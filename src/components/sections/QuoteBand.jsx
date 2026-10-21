@@ -1,5 +1,4 @@
 import { quote } from "../../data/site";
-import { SparklesText } from "../magicui/sparkles-text";
 import Reveal from "../ui/Reveal";
 
 /** A deliberate light band: the record's own words, set in the display serif. */
@@ -18,7 +17,7 @@ export default function QuoteBand() {
       </div>
 
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
-        <span className="inline-flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.4em] text-ink-950/50">
+        <span className="inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.4em] text-ink-950/60">
           <span aria-hidden="true" className="h-px w-8 bg-ink-950/25" />
           From the record
           <span aria-hidden="true" className="h-px w-8 bg-ink-950/25" />
@@ -26,23 +25,17 @@ export default function QuoteBand() {
 
         <Reveal blur>
           <blockquote className="mt-10 font-display text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.01em] text-ink-950">
-            <SparklesText
-              colors={{ first: "#b08d4f", second: "#8f7448" }}
-              sparklesCount={10}
-              className="inline-block [font-size:inherit] [&_strong]:font-[inherit]"
-            >
-              “{quote.text}”
-            </SparklesText>
+            “{quote.text}”
           </blockquote>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="mt-10 flex flex-col items-center gap-2">
             <span aria-hidden="true" className="h-px w-12 bg-bronze-600/60" />
-            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.3em] text-ink-950/60">
+            <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.3em] text-ink-950/60">
               {quote.source}
             </p>
-            <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-ink-950/35">
+            <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-ink-950/60">
               {quote.meta}
             </p>
           </div>

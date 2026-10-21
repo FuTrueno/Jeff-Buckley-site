@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import { useSectionNav } from "../../hooks/useSectionNav";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
-import { Meteors } from "../magicui/meteors";
 import { RetroGrid } from "../magicui/retro-grid";
 import { ShimmerButton } from "../magicui/shimmer-button";
 import Magnet from "../reactbits/Magnet";
-import StarBorder from "../reactbits/StarBorder";
+import Button from "../ui/Button";
 import Reveal from "../ui/Reveal";
 
 export default function CTA() {
@@ -26,9 +25,6 @@ export default function CTA() {
               darkLineColor="#c8a96b"
               className="opacity-25 motion-reduce:hidden"
             />
-            <div aria-hidden="true" className="absolute inset-0 overflow-hidden motion-reduce:hidden">
-              <Meteors number={10} angle={215} className="opacity-60" />
-            </div>
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/75 to-ink-950/5"
@@ -44,14 +40,14 @@ export default function CTA() {
 
             <div className="relative grid items-center gap-14 lg:grid-cols-12">
               <div className="lg:col-span-7">
-                <AnimatedShinyText className="inline-flex font-mono text-[10px] uppercase tracking-[0.42em] text-bronze-300">
+                <AnimatedShinyText className="inline-flex font-mono text-[12px] uppercase tracking-[0.42em] text-bronze-300">
                   Take a seat
                 </AnimatedShinyText>
                 <h2 className="mt-6 font-display text-[clamp(2.6rem,5.2vw,4.6rem)] font-light leading-[0.98] tracking-[-0.02em] text-ivory-50">
                   Still in{" "}
                   <span className="italic text-bronze-gradient">the room.</span>
                 </h2>
-                <p className="mt-6 max-w-md text-[14.5px] leading-relaxed text-mist-400">
+                <p className="mt-6 max-w-md text-[16px] leading-relaxed text-mist-400">
                   Register for a listening session and tell us where you want to
                   start: the whole album, or the one song that found you first.
                 </p>
@@ -77,27 +73,12 @@ export default function CTA() {
                     </ShimmerButton>
                   </Magnet>
 
-                  <StarBorder
-                    as="button"
-                    onClick={() => goToSection("listen")}
-                    radius={999}
-                    color="#e9d3a7"
-                    trailColor="#c8a96b"
-                    backgroundColor="rgba(9, 9, 12, 0.72)"
-                    textColor="#fbf9f4"
-                    borderColor="rgba(255,255,255,0.14)"
-                    thickness={1}
-                    glow={0.5}
-                    sparkle
-                    className="px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em]"
-                  >
-                    <span className="relative z-10 inline-flex items-center gap-2.5">
-                      <Play aria-hidden="true" className="size-3.5" fill="currentColor" strokeWidth={0} />
-                      Play the record
-                    </span>
-                  </StarBorder>
+                  <Button variant="ghost" onClick={() => goToSection("listen")}>
+                    <Play aria-hidden="true" className="size-3.5" fill="currentColor" strokeWidth={0} />
+                    Play the record
+                  </Button>
                 </div>
-                <p className="mt-6 font-mono text-[8px] uppercase tracking-[0.24em] text-mist-500">
+                <p className="mt-6 font-mono text-[12px] uppercase tracking-[0.24em] text-mist-400">
                   Front-end demonstration — nothing is stored
                 </p>
               </div>
@@ -113,14 +94,8 @@ export default function CTA() {
                     <div className="absolute inset-[31%] rounded-full bg-gradient-to-br from-bronze-200 via-bronze-400 to-bronze-600" />
                     <div className="absolute inset-[45%] rounded-full bg-ink-950" />
                     <div className="absolute inset-[46.5%] rounded-full border border-white/10" />
-                    <p className="absolute inset-x-0 top-[38%] text-center font-mono text-[6.5px] uppercase tracking-[0.2em] text-ink-950/70">
-                      Grace
-                    </p>
-                    <p className="absolute inset-x-0 top-[58%] text-center font-mono text-[5.5px] uppercase tracking-[0.16em] text-ink-950/50">
-                      33⅓
-                    </p>
                   </div>
-                  <span className="absolute -right-2 top-6 rounded-full border border-white/12 bg-ink-900/80 px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.22em] text-mist-300 backdrop-blur-md">
+                  <span className="absolute -right-2 top-6 rounded-full border border-white/12 bg-ink-900/80 px-3 py-1.5 font-mono text-[12px] uppercase tracking-[0.22em] text-mist-300 backdrop-blur-md">
                     Side A
                   </span>
                 </div>

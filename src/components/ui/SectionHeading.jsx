@@ -6,7 +6,7 @@ export function Eyebrow({ children, className, align = "left" }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.42em] text-bronze-500",
+        "inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.42em] text-bronze-500",
         align === "center" && "justify-center",
         className,
       )}
@@ -65,7 +65,7 @@ export default function SectionHeading({
             <Reveal delay={0.13}>
               <p
                 className={cn(
-                  "mt-5 max-w-xl text-[14.5px] leading-relaxed text-mist-400",
+                  "mt-5 max-w-xl text-[16px] leading-relaxed text-mist-400",
                   align === "center" && "mx-auto",
                 )}
               >

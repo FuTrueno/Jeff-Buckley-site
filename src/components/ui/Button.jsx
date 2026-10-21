@@ -31,7 +31,7 @@ export default function Button({
     "group inline-flex items-center justify-center gap-2.5 rounded-full font-medium uppercase",
     "transition-all duration-300 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50",
     size === "sm"
-      ? "px-5 py-2.5 text-[11px] tracking-[0.18em]"
+      ? "px-5 py-2.5 text-[12px] tracking-[0.18em]"
       : "px-7 py-3.5 text-[12px] tracking-[0.2em]",
     variants[variant],
     className,
