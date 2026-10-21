@@ -7,6 +7,8 @@ particle field, a lightbox gallery, and a working custom audio player.
 
 ![Home page hero](docs/screenshots/hero.jpg)
 
+![Signal path section — animated beams and orbiting tracks](docs/screenshots/signal.jpg)
+
 ---
 
 ## Quick start
