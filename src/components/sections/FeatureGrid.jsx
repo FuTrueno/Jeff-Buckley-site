@@ -1,16 +1,16 @@
 import { features } from "../../data/site";
 import { media } from "../../data/media";
 import { useSectionNav } from "../../hooks/useSectionNav";
-import BorderBeam from "../ui/BorderBeam";
+import { BorderBeam } from "../magicui/border-beam";
 import Button from "../ui/Button";
 import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
-import SpotlightCard from "../ui/SpotlightCard";
+import SpotlightCard from "../reactbits/SpotlightCard";
 
 function CardHeader({ icon: Icon, kicker }) {
   return (
     <div className="flex items-start justify-between gap-4">
-      <span className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-bronze-300 transition-colors duration-500 group-hover/spot:border-bronze-500/40 group-hover/spot:text-bronze-200">
+      <span className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-bronze-300 transition-colors duration-500 group-hover:border-bronze-500/40 group-hover:text-bronze-200">
         <Icon aria-hidden="true" className="size-[18px]" strokeWidth={1.5} />
       </span>
       <span className="text-right font-mono text-[8.5px] uppercase leading-relaxed tracking-[0.22em] text-mist-500">
@@ -79,7 +79,7 @@ export default function FeatureGrid() {
                     <img
                       src={media.cover}
                       alt=""
-                      className="h-full w-full object-cover opacity-80 transition-transform duration-[1200ms] group-hover/spot:scale-105"
+                      className="h-full w-full object-cover opacity-80 transition-transform duration-[1200ms] group-hover:scale-105"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
@@ -135,11 +135,22 @@ export default function FeatureGrid() {
             return (
               <Reveal key={feature.id} delay={index * 0.05} className={spanClass}>
                 {featured ? (
-                  <BorderBeam radius="rounded-[1.75rem]" duration={9} className="h-full">
-                    <SpotlightCard className="h-full bg-ink-900/40">{content}</SpotlightCard>
-                  </BorderBeam>
+                  <div className="relative h-full overflow-hidden rounded-[1.75rem]">
+                    <BorderBeam size={72} duration={8} colorFrom="#f6e9cd" colorTo="#a5874e" />
+                    <SpotlightCard
+                      className="group h-full rounded-[1.75rem] border border-white/10 bg-ink-900/40"
+                      spotlightColor="rgba(200,169,107,0.22)"
+                    >
+                      {content}
+                    </SpotlightCard>
+                  </div>
                 ) : (
-                  <SpotlightCard className="h-full">{content}</SpotlightCard>
+                  <SpotlightCard
+                    className="group h-full rounded-[1.75rem] border border-white/[0.07] bg-white/[0.015]"
+                    spotlightColor="rgba(200,169,107,0.16)"
+                  >
+                    {content}
+                  </SpotlightCard>
                 )}
               </Reveal>
             );

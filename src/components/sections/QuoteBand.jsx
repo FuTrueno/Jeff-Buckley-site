@@ -1,10 +1,11 @@
 import { quote } from "../../data/site";
+import { SparklesText } from "../magicui/sparkles-text";
 import Reveal from "../ui/Reveal";
 
 /** A deliberate light band: the record's own words, set in the display serif. */
 export default function QuoteBand() {
   return (
-    <section className="relative overflow-hidden bg-ivory-100 py-24 text-ink-950 sm:py-32">
+    <section id="quote" className="relative scroll-mt-24 overflow-hidden bg-ivory-100 py-24 text-ink-950 sm:py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 grain opacity-[0.4] mix-blend-multiply"
@@ -25,7 +26,13 @@ export default function QuoteBand() {
 
         <Reveal blur>
           <blockquote className="mt-10 font-display text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.01em] text-ink-950">
-            “{quote.text}”
+            <SparklesText
+              colors={{ first: "#b08d4f", second: "#8f7448" }}
+              sparklesCount={10}
+              className="inline-block [font-size:inherit] [&_strong]:font-[inherit]"
+            >
+              “{quote.text}”
+            </SparklesText>
           </blockquote>
         </Reveal>
 

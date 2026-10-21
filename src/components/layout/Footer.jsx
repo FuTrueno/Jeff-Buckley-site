@@ -4,6 +4,7 @@ import { nav } from "../../data/site";
 import { tracks } from "../../data/media";
 import { useListening } from "../../context/ListeningProvider";
 import { useSectionNav } from "../../hooks/useSectionNav";
+import { DotPattern } from "../magicui/dot-pattern";
 import Button from "../ui/Button";
 import { Eyebrow } from "../ui/SectionHeading";
 
@@ -23,7 +24,14 @@ export default function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze-500/50 to-transparent"
       />
 
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+      <DotPattern
+        width={30}
+        height={30}
+        cr={1}
+        className="z-0 text-bronze-300/[0.10] [mask-image:radial-gradient(ellipse_65%_60%_at_50%_35%,#000_10%,transparent_80%)]"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
         <div className="grid gap-14 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
           {/* Closing statement */}
           <div className="lg:col-span-5">
@@ -59,6 +67,15 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => goToSection("signal")}
+                    className="text-[13.5px] text-mist-300 transition-colors hover:text-bronze-200"
+                  >
+                    Signal path
+                  </button>
+                </li>
                 <li>
                   <button
                     type="button"

@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ScrollProgress from "./ScrollProgress";
+import ClickSpark from "../reactbits/ClickSpark";
 
 /** App shell: fixed nav, page outlet, footer, grain pass and scroll restore. */
 export default function Layout() {
@@ -17,7 +18,17 @@ export default function Layout() {
       <ScrollProgress />
       <Navbar />
       <main id="main" className="flex-1">
-        <Outlet />
+        <ClickSpark
+          sparkColor="#e9d3a7"
+          sparkSize={11}
+          sparkRadius={26}
+          sparkCount={8}
+          duration={450}
+          easing="ease-out"
+          className="relative"
+        >
+          <Outlet />
+        </ClickSpark>
       </main>
       <Footer />
       <div className="grain-overlay" aria-hidden="true" />

@@ -4,6 +4,7 @@ import { useScrollToSection } from "../hooks/useSectionNav";
 import Hero from "../components/sections/Hero";
 import SongMarquee from "../components/sections/SongMarquee";
 import Story from "../components/sections/Story";
+import SignalPath from "../components/sections/SignalPath";
 import FeatureGrid from "../components/sections/FeatureGrid";
 import MediaShowcase from "../components/sections/MediaShowcase";
 import ListeningRoom from "../components/sections/ListeningRoom";
@@ -25,6 +26,7 @@ export default function Home() {
       <Hero />
       <SongMarquee />
       <Story />
+      <SignalPath />
       <FeatureGrid />
       <MediaShowcase />
       <ListeningRoom />

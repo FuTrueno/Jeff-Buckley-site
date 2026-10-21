@@ -157,3 +157,77 @@ transformed child spans. Either:
 
 React Bits is free and open source, but each component's licence lives with its
 source. Check the LICENSE in the component/repo before shipping commercially.
+
+---
+
+## 9. What this project actually vendors
+
+This site now ships official source from both libraries:
+
+**Magic UI — `src/components/magicui/`**
+
+| Component | Used for |
+|---|---|
+| `AuroraText` | Hero accent ("feels close.") |
+| `Meteors` | Hero + CTA overlays |
+| `BorderBeam` | Album card, featured feature card |
+| `ShimmerButton` | Hero + CTA primary actions |
+| `AnimatedShinyText` | Section eyebrows |
+| `DotPattern` | Signal path + footer backgrounds |
+| `RetroGrid` | CTA perspective grid |
+| `AnimatedBeam` | Signal-path connection lines |
+| `OrbitingCircles` | Five-track orbit |
+| `NumberTicker` | Signal-path counters |
+| `SparklesText` | Lyric quote |
+| `LightRays` | Hero volumetric light |
+
+**React Bits — `src/components/reactbits/`**
+
+| Component | Used for |
+|---|---|
+| `SpotlightCard` | Feature grid |
+| `StarBorder` | Hero + CTA secondary actions |
+| `Magnet` | Primary CTA wrapper |
+| `BlurText` | Hero standfirst |
+| `ClickSpark` | Global click feedback |
+
+GSAP- and Three.js-based components (`SplitText`, `ScrollReveal`, `Particles`,
+`Beams`, etc.) were intentionally not installed: the site already has local
+equivalents and the dependency cost was not justified.
+
+### Two integration details
+
+1. **Motion alias.** Magic UI and several React Bits components import from
+   `motion/react`. `vite.config.js` aliases that to the already-installed
+   `framer-motion`, so no duplicate animation runtime is shipped:
+
+   ```js
+   resolve: {
+     alias: {
+       "@": fileURLToPath(new URL("./src", import.meta.url)),
+       "motion/react": "framer-motion",
+     },
+   }
+   ```
+
+2. **`@theme inline` for animation tokens.** Magic UI's animations read
+   per-element CSS variables. Declaring the tokens in a normal `@theme` block
+   makes the utility resolve to `var(--animate-orbit)` at `:root`, where
+   `--duration` is undefined, so the animation silently never runs. Use:
+
+   ```css
+   @theme inline {
+     --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+     --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+     /* … */
+   }
+   ```
+
+### Licensing
+
+- **Magic UI** components are MIT licensed — see <https://magicui.design>.
+- **React Bits** is MIT + Commons Clause — see
+  <https://github.com/DavidHDev/react-bits/blob/main/LICENSE.md>. The clause
+  permits using the components inside an application or website, but not selling
+  or redistributing the components themselves. Keep the notices if you extract
+  them into a library.

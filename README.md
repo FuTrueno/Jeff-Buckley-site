@@ -79,21 +79,29 @@ jeff-buckley-site/
    │  │  ├─ ScrollProgress.jsx # top reading-progress bar
    │  │  └─ Footer.jsx         # closing statement, link columns, wordmark
    │  ├─ sections/
-   │  │  ├─ Hero.jsx           # video/poster background, split text, album card
+   │  │  ├─ Hero.jsx           # rays, meteors, aurora text, shimmer CTA, beam card
    │  │  ├─ SongMarquee.jsx    # running track-title ribbon
    │  │  ├─ Story.jsx          # album sleeve + parallax still + narrative
-   │  │  ├─ FeatureGrid.jsx    # bento of spotlight cards + border beam
+   │  │  ├─ SignalPath.jsx     # NEW: animated beams + orbiting tracks + counters
+   │  │  ├─ FeatureGrid.jsx    # React Bits spotlight cards + Magic border beam
    │  │  ├─ MediaShowcase.jsx  # video cards + masonry gallery + lightbox
    │  │  ├─ ListeningRoom.jsx  # custom audio player + tracklist
-   │  │  ├─ QuoteBand.jsx      # inverted ivory band with lyric
+   │  │  ├─ QuoteBand.jsx      # ivory band + sparkle text lyric
    │  │  ├─ SongTable.jsx      # the assignment table, restyled + playable
-   │  │  └─ CTA.jsx            # registration panel + spinning vinyl
+   │  │  └─ CTA.jsx            # retro grid + meteors + vinyl + shimmer CTA
+   │  ├─ magicui/              # vendored Magic UI source (12 components)
+   │  │  ├─ aurora-text.tsx    ├─ meteors.tsx      ├─ border-beam.tsx
+   │  │  ├─ shimmer-button.tsx ├─ animated-shiny-text.tsx ├─ dot-pattern.tsx
+   │  │  ├─ retro-grid.tsx     ├─ animated-beam.tsx ├─ orbiting-circles.tsx
+   │  │  └─ number-ticker.tsx  ├─ sparkles-text.tsx └─ light-rays.tsx
+   │  ├─ reactbits/            # vendored React Bits source (5 components)
+   │  │  ├─ SpotlightCard.jsx  ├─ StarBorder.jsx   ├─ Magnet.jsx
+   │  │  └─ BlurText.jsx       └─ ClickSpark.jsx
    │  └─ ui/
    │     ├─ SplitText.jsx      # per-character reveal
    │     ├─ RotatingText.jsx   # 3D flip word cycler
    │     ├─ Reveal.jsx         # scroll-triggered fade/rise
-   │     ├─ SpotlightCard.jsx  # cursor-tracked radial glow
-   │     ├─ BorderBeam.jsx     # travelling light on the card border
+   │     ├─ BorderBeam.jsx     # travelling light (Story)
    │     ├─ TiltCard.jsx       # 3D pointer tilt + glare
    │     ├─ Particles.jsx      # canvas dust + constellation links
    │     ├─ DotGrid.jsx        # dot field with cursor spotlight
@@ -166,42 +174,53 @@ checks `useReducedMotion()`, and `index.css` neutralises CSS animation for
 
 ---
 
-## React Bits
+## Magic UI + React Bits
 
-The visual language follows React Bits patterns, but **every effect is
-implemented locally with Framer Motion + CSS** — no extra runtime dependencies,
-no GSAP, no Three.js. That keeps the bundle small and the code yours to edit.
+The second design pass vendors **official component source** into the repo:
 
-If you want the official library components instead, see
-**[docs/react-bits.md](docs/react-bits.md)** for exact CLI commands, variants,
-and how to swap them in. Short version:
+- `src/components/magicui/` — 12 Magic UI components: `AuroraText`, `Meteors`,
+  `BorderBeam`, `ShimmerButton`, `AnimatedShinyText`, `DotPattern`, `RetroGrid`,
+  `AnimatedBeam`, `OrbitingCircles`, `NumberTicker`, `SparklesText`, `LightRays`.
+- `src/components/reactbits/` — 5 React Bits components: `SpotlightCard`,
+  `StarBorder`, `Magnet`, `BlurText`, `ClickSpark`.
 
-```bash
-npx shadcn@latest add @react-bits/SpotlightCard-JS-TW
-```
+Where they appear:
 
-Suffix rule: `-<JS|TS>-<CSS|TW>`. This project is JavaScript + Tailwind.
+| Component | Placement |
+|---|---|
+| `LightRays`, `Meteors`, `AuroraText` | Hero lighting, particles and accent line |
+| `SplitText`, `BlurText` | Hero headline and standfirst |
+| `ShimmerButton`, `Magnet`, `StarBorder` | Hero + CTA actions |
+| `BorderBeam` (Magic) | Album card, featured feature card |
+| `SpotlightCard` (React Bits) | Feature grid |
+| `AnimatedBeam`, `OrbitingCircles`, `NumberTicker` | New `SignalPath` section |
+| `AnimatedShinyText` | Section eyebrows |
+| `DotPattern` | Signal path + footer backgrounds |
+| `RetroGrid`, `Meteors` | CTA panel |
+| `SparklesText` | Lyric quote |
+| `ClickSpark` | Global click feedback |
 
-| Pattern | Local file | React Bits component |
-|---|---|---|
-| Split-text headline | `ui/SplitText.jsx` | `SplitText`, `BlurText` |
-| Rotating words | `ui/RotatingText.jsx` | `RotatingText` |
-| Scroll reveal | `ui/Reveal.jsx` | `AnimatedContent`, `ScrollReveal` |
-| Cursor spotlight card | `ui/SpotlightCard.jsx` | `SpotlightCard`, `BorderGlow` |
-| Travelling border light | `ui/BorderBeam.jsx` | `StarBorder`, `BorderGlow` (Border Beam itself is a Magic UI component) |
-| 3D tilt | `ui/TiltCard.jsx` | `TiltedCard`, `ProfileCard` |
-| Hero particles | `ui/Particles.jsx` | `Particles`, `DotField` |
-| Dot field | `ui/DotGrid.jsx` | `DotGrid` |
-| Seamless ticker | `ui/Marquee.jsx` | `LogoLoop`, `ScrollVelocity` |
-| Gallery modal | `ui/Lightbox.jsx` | `Masonry`, `Carousel` |
+Adaptations worth knowing:
 
-One implementation note worth keeping: don't wrap animated per-character spans in
-a `background-clip: text` parent — Chromium drops the gradient when the children
-are transformed. The bronze accent phrases are therefore animated as a single
-opacity fade (`Hero.jsx`, `Information.jsx`, `ListeningForm.jsx`).
+- **No new dependencies.** `motion/react` is aliased to the already-installed
+  `framer-motion` in `vite.config.js`, and `@` is aliased to `src` for their
+  `@/lib/utils` imports. GSAP/Three-based components were deliberately skipped.
+- **TypeScript sources in a JS app.** Magic UI ships `.tsx`; Vite compiles them
+  without a type-check step, so the rest of the app stays JSX.
+- **`@theme inline` is required** for Magic UI's animation tokens. They read
+  per-element variables (`--duration`, `--speed`, `--angle`); a normal `@theme`
+  resolves those at `:root`, where they are undefined, and the animation silently
+  never runs. See the block in `src/index.css`.
+- **Palette overrides.** The libraries default to purple; the vendored copies and
+  props are tuned to bronze, ivory and steel. Some defaults were edited in place
+  (`meteors.tsx`, `animated-shiny-text.tsx`, `number-ticker.tsx`).
+- **Reduced motion.** Decorative layers are `motion-reduce:hidden`; components
+  that already check `prefers-reduced-motion` keep doing so.
+
+Full install/swap instructions (CLI variants, prop differences, licensing) are in
+**[docs/react-bits.md](docs/react-bits.md)**.
 
 ---
-
 ## Assignment coverage
 
 The original brief (semantic HTML, a 3+ column / 4+ row table, audio, video, and
@@ -236,7 +255,7 @@ the legacy folder is the artefact that demonstrates it.
   intentional pair (mono 8–10px) and never carry essential information alone.
 - Performance: images are lazy-loaded and sized, the particle canvas caps DPR at
   2 and pauses off-screen/hidden, and animation is disabled for reduced motion.
-  Build output is ~14 kB CSS and ~157 kB JS gzipped.
+  Build output is ~17 kB CSS and ~182 kB JS gzipped.
 
 ---
 
